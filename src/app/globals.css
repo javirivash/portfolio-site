@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #FAFAF5;
+  --color-charcoal: #1A1A1A;
+  --color-deep-blue: #1E3A5F;
+  --color-sage: #8B9D8B;
+  --color-warm-gray: #EDEAE5;
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

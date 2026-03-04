@@ -1,19 +1,164 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { projects } from "@/data/projects";
 
+// Types for Framer Motion components
+type MotionDivType = typeof import("framer-motion").motion.div;
+type AnimatePresenceType = typeof import("framer-motion").AnimatePresence;
+
 export default function Projects() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [MotionDiv, setMotionDiv] = useState<MotionDivType | null>(null);
+  const [AnimatePresence, setAnimatePresence] =
+    useState<AnimatePresenceType | null>(null);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Check for reduced motion preference
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mediaQuery.matches);
+
+    const handler = (e: MediaQueryListEvent) =>
+      setPrefersReducedMotion(e.matches);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
+
+  // Lazy-load Framer Motion when section is near viewport
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          import("framer-motion").then((mod) => {
+            setMotionDiv(() => mod.motion.div);
+            setAnimatePresence(() => mod.AnimatePresence);
+          });
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [prefersReducedMotion]);
 
   const toggleProject = (id: string) => {
     setExpandedId(expandedId === id ? null : id);
   };
 
+  // Render expanded content with CSS transitions as fallback
+  const renderExpandedContent = (project: (typeof projects)[0]) => {
+    const content = (
+      <div className="border-t border-warm-gray px-6 py-8 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div>
+            <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-sage">
+              Context
+            </h4>
+            <p className="text-sm leading-relaxed text-charcoal/70">
+              {project.context}
+            </p>
+          </div>
+          <div>
+            <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-sage">
+              Approach
+            </h4>
+            <p className="text-sm leading-relaxed text-charcoal/70">
+              {project.approach}
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div>
+            <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-sage">
+              Outcome
+            </h4>
+            <p className="text-sm leading-relaxed text-charcoal/70">
+              {project.outcome}
+            </p>
+          </div>
+          <div>
+            <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-sage">
+              Stack
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {project.stack.map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-full bg-deep-blue/10 px-3 py-1 font-mono text-xs text-deep-blue"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* Links */}
+            <div className="mt-6 flex gap-4">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium text-deep-blue underline underline-offset-4 hover:text-deep-blue/80"
+                >
+                  View Live Site
+                </a>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium text-deep-blue underline underline-offset-4 hover:text-deep-blue/80"
+                >
+                  View Code on GitHub
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+
+    // If Framer Motion is loaded and user doesn't prefer reduced motion
+    if (AnimatePresence && MotionDiv && !prefersReducedMotion) {
+      return (
+        <AnimatePresence>
+          {expandedId === project.id && (
+            <MotionDiv
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              {content}
+            </MotionDiv>
+          )}
+        </AnimatePresence>
+      );
+    }
+
+    // CSS fallback for reduced motion or before Framer Motion loads
+    if (expandedId === project.id) {
+      return <div className="overflow-hidden">{content}</div>;
+    }
+
+    return null;
+  };
+
   return (
-    <section id="projects" className="py-24 px-6 lg:px-16">
+    <section ref={sectionRef} id="projects" className="px-6 py-24 lg:px-16">
       <div className="mx-auto max-w-7xl">
         <AnimatedSection>
           <h2 className="font-serif text-4xl font-bold tracking-tight text-charcoal md:text-5xl">
@@ -73,88 +218,7 @@ export default function Projects() {
                 </button>
 
                 {/* Expanded case study */}
-                <AnimatePresence>
-                  {expandedId === project.id && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="border-t border-warm-gray px-6 py-8 lg:px-8">
-                        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                          <div>
-                            <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-sage">
-                              Context
-                            </h4>
-                            <p className="text-sm leading-relaxed text-charcoal/70">
-                              {project.context}
-                            </p>
-                          </div>
-                          <div>
-                            <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-sage">
-                              Approach
-                            </h4>
-                            <p className="text-sm leading-relaxed text-charcoal/70">
-                              {project.approach}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
-                          <div>
-                            <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-sage">
-                              Outcome
-                            </h4>
-                            <p className="text-sm leading-relaxed text-charcoal/70">
-                              {project.outcome}
-                            </p>
-                          </div>
-                          <div>
-                            <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-sage">
-                              Stack
-                            </h4>
-                            <div className="flex flex-wrap gap-2">
-                              {project.stack.map((tech) => (
-                                <span
-                                  key={tech}
-                                  className="rounded-full bg-deep-blue/10 px-3 py-1 font-mono text-xs text-deep-blue"
-                                >
-                                  {tech}
-                                </span>
-                              ))}
-                            </div>
-
-                            {/* Links */}
-                            <div className="mt-6 flex gap-4">
-                              {project.liveUrl && (
-                                <a
-                                  href={project.liveUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-sm font-medium text-deep-blue underline underline-offset-4 hover:text-deep-blue/80"
-                                >
-                                  View Live Site
-                                </a>
-                              )}
-                              {project.githubUrl && (
-                                <a
-                                  href={project.githubUrl}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-sm font-medium text-deep-blue underline underline-offset-4 hover:text-deep-blue/80"
-                                >
-                                  View Code on GitHub
-                                </a>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {renderExpandedContent(project)}
               </div>
             </AnimatedSection>
           ))}

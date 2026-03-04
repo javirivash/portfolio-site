@@ -1,3 +1,4 @@
+import Image from "next/image";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 
 export default function Resume() {
@@ -7,7 +8,7 @@ export default function Resume() {
         <AnimatedSection>
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <h2 className="font-serif text-4xl font-bold tracking-tight text-charcoal md:text-5xl">
-              Resumé
+              Resume
             </h2>
             <a
               href="/resume.pdf"
@@ -35,25 +36,15 @@ export default function Resume() {
 
         <AnimatedSection delay={0.1}>
           <div className="mt-12">
-            {/* Inline PDF viewer */}
             <div className="overflow-hidden rounded-sm border border-warm-gray bg-white shadow-sm">
-              <iframe
-                src="/resume.pdf"
-                title="Javier Rivas — Resume"
-                className="h-[800px] w-full md:h-[1000px]"
+              <Image
+                src="/resume.png"
+                alt="Javier Rivas — Resume"
+                width={3672}
+                height={4752}
+                className="w-full"
               />
             </div>
-            <p className="mt-3 text-center text-xs text-sage">
-              If the PDF doesn&apos;t display,{" "}
-              <a
-                href="/resume.pdf"
-                download
-                className="underline underline-offset-2 hover:text-deep-blue"
-              >
-                download it directly
-              </a>
-              .
-            </p>
           </div>
         </AnimatedSection>
       </div>

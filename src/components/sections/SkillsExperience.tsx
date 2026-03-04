@@ -29,10 +29,7 @@ export default function SkillsExperience() {
                     </h3>
                     <ul className="space-y-1.5">
                       {category.items.map((item) => (
-                        <li
-                          key={item}
-                          className="text-sm text-charcoal/80"
-                        >
+                        <li key={item} className="text-sm text-charcoal/80">
                           {item}
                         </li>
                       ))}
@@ -67,9 +64,7 @@ export default function SkillsExperience() {
                     <p className="mt-3 text-sm leading-relaxed text-charcoal/70">
                       {job.description}
                     </p>
-                    {index < experience.length - 1 && (
-                      <div className="mt-12" />
-                    )}
+                    {index < experience.length - 1 && <div className="mt-12" />}
                   </div>
                 ))}
               </div>

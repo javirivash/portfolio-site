@@ -144,12 +144,12 @@ A single-page portfolio website for a frontend engineer, using a **magazine/edit
 
 ### Typography
 
-| Role       | Direction                                             |
-| ---------- | ----------------------------------------------------- |
-| Headings   | Serif typeface (e.g. Playfair Display, DM Serif Text) |
-| Subheadings| Sans-serif (e.g. Inter, DM Sans) for contrast         |
-| Body       | Sans-serif, same family as subheadings                |
-| Accents    | Monospace for tech tags or code references             |
+| Role        | Direction                                             |
+| ----------- | ----------------------------------------------------- |
+| Headings    | Serif typeface (e.g. Playfair Display, DM Serif Text) |
+| Subheadings | Sans-serif (e.g. Inter, DM Sans) for contrast         |
+| Body        | Sans-serif, same family as subheadings                |
+| Accents     | Monospace for tech tags or code references            |
 
 ---
 
@@ -188,24 +188,24 @@ A single-page portfolio website for a frontend engineer, using a **magazine/edit
 
 ## Responsive Behavior
 
-| Breakpoint | Behavior                                                    |
-| ---------- | ----------------------------------------------------------- |
-| Desktop    | Full editorial grid layouts, multi-column sections, cursor effects active |
-| Tablet     | Simplified 2-column grids, adjusted spacing, cursor effects reduced |
+| Breakpoint | Behavior                                                                            |
+| ---------- | ----------------------------------------------------------------------------------- |
+| Desktop    | Full editorial grid layouts, multi-column sections, cursor effects active           |
+| Tablet     | Simplified 2-column grids, adjusted spacing, cursor effects reduced                 |
 | Mobile     | Single-column stack, hamburger nav, touch-friendly targets, cursor effects disabled |
 
 ---
 
 ## Tech Stack
 
-| Layer       | Choice                          |
-| ----------- | ------------------------------- |
-| Framework   | React + Next.js (App Router)    |
-| Styling     | Tailwind CSS                    |
-| Animation   | Framer Motion                   |
-| Deployment  | Vercel                          |
-| Resume PDF  | Static file in /public          |
-| Calendly    | Embed widget or external link   |
+| Layer      | Choice                        |
+| ---------- | ----------------------------- |
+| Framework  | React + Next.js (App Router)  |
+| Styling    | Tailwind CSS                  |
+| Animation  | Framer Motion                 |
+| Deployment | Vercel                        |
+| Resume PDF | Static file in /public        |
+| Calendly   | Embed widget or external link |
 
 ---
 

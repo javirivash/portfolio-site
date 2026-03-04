@@ -18,15 +18,6 @@ Hello! This is my personal portfolio site.
 - Fully responsive (mobile, tablet, desktop)
 - Accessible — semantic HTML, reduced-motion support
 
-## Running Locally
-
-```bash
-npm install
-npm run dev
-```
-
-Open [localhost:3000](http://localhost:3000).
-
 ## License
 
 All rights reserved.

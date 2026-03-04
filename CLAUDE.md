@@ -85,14 +85,14 @@ chore:    Maintenance tasks, dependency updates
 
 ## Tech Stack
 
-| Layer       | Choice                          |
-| ----------- | ------------------------------- |
-| Framework   | Next.js (App Router)            |
-| Language    | TypeScript (strict mode)        |
-| Styling     | Tailwind CSS                    |
-| Animation   | Framer Motion                   |
-| Fonts       | Playfair Display + Inter via `next/font/google` |
-| Deployment  | Vercel                          |
+| Layer      | Choice                                          |
+| ---------- | ----------------------------------------------- |
+| Framework  | Next.js (App Router)                            |
+| Language   | TypeScript (strict mode)                        |
+| Styling    | Tailwind CSS                                    |
+| Animation  | Framer Motion                                   |
+| Fonts      | Playfair Display + Inter via `next/font/google` |
+| Deployment | Vercel                                          |
 
 ---
 
@@ -100,21 +100,21 @@ chore:    Maintenance tasks, dependency updates
 
 Use these exact values. They MUST be configured in `tailwind.config.ts` as custom theme extensions.
 
-| Token        | Value     | Usage                                      |
-|--------------|-----------|--------------------------------------------|
-| `cream`      | `#FAFAF5` | Page background                            |
-| `charcoal`   | `#1A1A1A` | Primary text                               |
-| `deep-blue`  | `#1E3A5F` | Accent — CTAs, links, interactive elements |
-| `sage`       | `#8B9D8B` | Secondary — muted text, subtle accents     |
-| `warm-gray`  | `#EDEAE5` | Dividers, card backgrounds, borders        |
+| Token       | Value     | Usage                                      |
+| ----------- | --------- | ------------------------------------------ |
+| `cream`     | `#FAFAF5` | Page background                            |
+| `charcoal`  | `#1A1A1A` | Primary text                               |
+| `deep-blue` | `#1E3A5F` | Accent — CTAs, links, interactive elements |
+| `sage`      | `#8B9D8B` | Secondary — muted text, subtle accents     |
+| `warm-gray` | `#EDEAE5` | Dividers, card backgrounds, borders        |
 
 ### Typography
 
-| Role        | Font             | Usage                              |
-|-------------|------------------|------------------------------------|
-| Headings    | Playfair Display | Section titles, hero name, serif   |
-| Body        | Inter            | Paragraphs, nav, UI text           |
-| Accents     | Monospace        | Tech tags, code references         |
+| Role     | Font             | Usage                            |
+| -------- | ---------------- | -------------------------------- |
+| Headings | Playfair Display | Section titles, hero name, serif |
+| Body     | Inter            | Paragraphs, nav, UI text         |
+| Accents  | Monospace        | Tech tags, code references       |
 
 ---
 
@@ -158,21 +158,21 @@ Use `@/*` for all imports from `src/`:
 
 ```typescript
 // Good
-import { Hero } from '@/components';
-import { projects } from '@/data/projects';
+import { Hero } from "@/components";
+import { projects } from "@/data/projects";
 
 // Bad
-import Hero from '../../../components/sections/Hero';
+import Hero from "../../../components/sections/Hero";
 ```
 
 Components are barrel-exported from `src/components/index.ts`:
 
 ```typescript
 // Good — single import for multiple components
-import { Navbar, Hero, About, Footer } from '@/components';
+import { Navbar, Hero, About, Footer } from "@/components";
 
 // Acceptable — direct import for single component
-import Hero from '@/components/sections/Hero';
+import Hero from "@/components/sections/Hero";
 ```
 
 ---
@@ -243,15 +243,15 @@ const bio = "Lorem ipsum dolor sit amet...";
 
 ## Animation Guidelines
 
-| Interaction        | Approach                                                                 |
-|--------------------|--------------------------------------------------------------------------|
-| Scroll reveal      | `whileInView` + fade-in + slide-up (12–20px). Use `once: true`.         |
-| Hero parallax      | `useMotionValue` + `useTransform` tracking mouse position.              |
-| Project expansion  | `AnimatePresence` + `layout` prop. One expanded at a time.              |
-| Hover states       | Subtle scale (1.02–1.05) or color transition.                           |
-| Transitions        | 0.3s–0.6s duration. `ease` or low-bounce spring.                        |
-| Touch devices      | Disable cursor-driven effects. Fall back to static layout.              |
-| Reduced motion     | Wrap all motion in `prefers-reduced-motion` checks. Respect user prefs. |
+| Interaction       | Approach                                                                |
+| ----------------- | ----------------------------------------------------------------------- |
+| Scroll reveal     | `whileInView` + fade-in + slide-up (12–20px). Use `once: true`.         |
+| Hero parallax     | `useMotionValue` + `useTransform` tracking mouse position.              |
+| Project expansion | `AnimatePresence` + `layout` prop. One expanded at a time.              |
+| Hover states      | Subtle scale (1.02–1.05) or color transition.                           |
+| Transitions       | 0.3s–0.6s duration. `ease` or low-bounce spring.                        |
+| Touch devices     | Disable cursor-driven effects. Fall back to static layout.              |
+| Reduced motion    | Wrap all motion in `prefers-reduced-motion` checks. Respect user prefs. |
 
 ---
 

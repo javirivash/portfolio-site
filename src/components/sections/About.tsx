@@ -28,8 +28,8 @@ export default function About() {
                 At DataRobot, I progressed from Associate to Frontend Engineer
                 II, owning feature projects end-to-end — from planning and
                 technical specs through testing and stakeholder sign-off. I
-                thrive in fast-paced environments where quality and collaboration
-                go hand in hand.
+                thrive in fast-paced environments where quality and
+                collaboration go hand in hand.
               </p>
 
               {/* Pull quote */}
@@ -40,8 +40,8 @@ export default function About() {
 
               <p>
                 My journey started in Industrial Engineering at ITESM, which
-                gave me a systems-thinking mindset I bring to every line of code.
-                When I&apos;m not coding, I&apos;m exploring new tools and
+                gave me a systems-thinking mindset I bring to every line of
+                code. When I&apos;m not coding, I&apos;m exploring new tools and
                 approaches to make the web more accessible and performant.
               </p>
             </div>

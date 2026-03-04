@@ -18,7 +18,7 @@ export default function Hero() {
   const isTouchDevice = useSyncExternalStore(
     subscribe,
     getIsTouchDevice,
-    () => false
+    () => false,
   );
 
   useEffect(() => {

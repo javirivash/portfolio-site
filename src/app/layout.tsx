@@ -13,8 +13,7 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-// TODO: Replace with production URL
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.javirivash.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -48,16 +47,6 @@ export const metadata: Metadata = {
     //     alt: "Javier Rivas — Frontend Engineer",
     //   },
     // ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Javier Rivas — Frontend Engineer",
-    description:
-      "Frontend Engineer with 4+ years of experience building scalable, accessible user interfaces.",
-    // TODO: Add Twitter handle if applicable
-    // creator: "@handle",
-    // TODO: Add social sharing image
-    // images: ["/og-image.png"],
   },
   robots: {
     index: true,

@@ -14,6 +14,9 @@ const navLinks = [
 type MotionDivType = typeof import("framer-motion").motion.div;
 type AnimatePresenceType = typeof import("framer-motion").AnimatePresence;
 
+// Easing curve: smooth acceleration + deceleration
+const EASE = [0.4, 0, 0.2, 1] as const;
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
@@ -45,20 +48,45 @@ export default function Navbar() {
 
   const renderMobileMenu = () => {
     const menuContent = (
-      <div className="flex flex-col gap-4 px-6 py-6">
-        {navLinks.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            onClick={() => {
-              setMobileOpen(false);
-              hamburgerRef.current?.focus();
-            }}
-            className="text-base text-charcoal/70 transition-colors hover:text-deep-blue"
-          >
-            {link.label}
-          </a>
-        ))}
+      <div className="flex flex-col px-6 py-6">
+        {navLinks.map((link, index) => {
+          // Staggered links when Framer Motion is available
+          if (MotionDiv && mobileOpen && !prefersReducedMotion) {
+            return (
+              <MotionDiv
+                key={link.href}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.2, delay: 0.1 + index * 0.05, ease: EASE }}
+              >
+                <a
+                  href={link.href}
+                  onClick={() => {
+                    setMobileOpen(false);
+                    hamburgerRef.current?.focus();
+                  }}
+                  className="block py-3 text-base text-charcoal/70 transition-colors hover:text-deep-blue"
+                >
+                  {link.label}
+                </a>
+              </MotionDiv>
+            );
+          }
+
+          return (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => {
+                setMobileOpen(false);
+                hamburgerRef.current?.focus();
+              }}
+              className="block py-3 text-base text-charcoal/70 transition-colors hover:text-deep-blue"
+            >
+              {link.label}
+            </a>
+          );
+        })}
       </div>
     );
 
@@ -72,6 +100,7 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: EASE }}
               className="overflow-hidden border-b border-warm-gray bg-cream md:hidden"
             >
               {menuContent}
@@ -135,13 +164,13 @@ export default function Navbar() {
           aria-controls="mobile-menu"
         >
           <span
-            className={`block h-0.5 w-6 bg-charcoal transition-transform ${mobileOpen ? "translate-y-2 rotate-45" : ""}`}
+            className={`block h-0.5 w-6 bg-charcoal transition-all duration-300 ease-in-out ${mobileOpen ? "translate-y-2 rotate-45" : ""}`}
           />
           <span
-            className={`block h-0.5 w-6 bg-charcoal transition-opacity ${mobileOpen ? "opacity-0" : ""}`}
+            className={`block h-0.5 w-6 bg-charcoal transition-all duration-300 ease-in-out ${mobileOpen ? "scale-x-0 opacity-0" : ""}`}
           />
           <span
-            className={`block h-0.5 w-6 bg-charcoal transition-transform ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`}
+            className={`block h-0.5 w-6 bg-charcoal transition-all duration-300 ease-in-out ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`}
           />
         </button>
       </div>

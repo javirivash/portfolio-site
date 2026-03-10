@@ -24,6 +24,7 @@ export default function Resume() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                aria-hidden="true"
               >
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                 <polyline points="7 10 12 15 17 10" />
@@ -36,6 +37,10 @@ export default function Resume() {
 
         <AnimatedSection delay={0.1}>
           <div className="mt-12">
+            <p className="sr-only">
+              Javier Rivas&apos;s resume is displayed as an image below. Use the
+              Download PDF button above to save an accessible copy.
+            </p>
             <div className="overflow-hidden rounded-sm border border-warm-gray bg-white shadow-sm">
               <Image
                 src="/resume.png"

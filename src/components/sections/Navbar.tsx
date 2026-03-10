@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -16,6 +16,7 @@ type AnimatePresenceType = typeof import("framer-motion").AnimatePresence;
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
   const [MotionDiv, setMotionDiv] = useState<MotionDivType | null>(null);
   const [AnimatePresence, setAnimatePresence] =
     useState<AnimatePresenceType | null>(null);
@@ -49,7 +50,10 @@ export default function Navbar() {
           <a
             key={link.href}
             href={link.href}
-            onClick={() => setMobileOpen(false)}
+            onClick={() => {
+              setMobileOpen(false);
+              hamburgerRef.current?.focus();
+            }}
             className="text-base text-charcoal/70 transition-colors hover:text-deep-blue"
           >
             {link.label}
@@ -64,6 +68,7 @@ export default function Navbar() {
         <AnimatePresence>
           {mobileOpen && (
             <MotionDiv
+              id="mobile-menu"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
@@ -79,7 +84,7 @@ export default function Navbar() {
     // CSS fallback for reduced motion or before Framer Motion loads
     if (mobileOpen) {
       return (
-        <div className="overflow-hidden border-b border-warm-gray bg-cream md:hidden">
+        <div id="mobile-menu" className="overflow-hidden border-b border-warm-gray bg-cream md:hidden">
           {menuContent}
         </div>
       );
@@ -90,9 +95,18 @@ export default function Navbar() {
 
   return (
     <nav className="fixed left-0 right-0 top-0 z-50 border-b border-warm-gray/50 bg-cream/90 backdrop-blur-sm">
+      {/* Skip link */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-sm focus:bg-deep-blue focus:px-4 focus:py-2 focus:text-sm focus:text-cream"
+      >
+        Skip to main content
+      </a>
+
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-16">
         <a
           href="#"
+          aria-label="Javier Rivas — Home"
           className="font-serif text-xl font-bold tracking-tight text-charcoal"
         >
           Javier Rivas
@@ -113,10 +127,12 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
+          ref={hamburgerRef}
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="flex flex-col gap-1.5 md:hidden"
+          className="flex flex-col gap-1.5 rounded-sm focus:outline-2 focus:outline-offset-4 focus:outline-deep-blue md:hidden"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
         >
           <span
             className={`block h-0.5 w-6 bg-charcoal transition-transform ${mobileOpen ? "translate-y-2 rotate-45" : ""}`}

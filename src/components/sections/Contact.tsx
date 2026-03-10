@@ -44,7 +44,7 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="text-charcoal/50 transition-colors hover:text-deep-blue"
+              className="text-charcoal/70 transition-colors hover:text-deep-blue"
             >
               <svg
                 width="20"
@@ -60,7 +60,7 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="text-charcoal/50 transition-colors hover:text-deep-blue"
+              className="text-charcoal/70 transition-colors hover:text-deep-blue"
             >
               <svg
                 width="20"

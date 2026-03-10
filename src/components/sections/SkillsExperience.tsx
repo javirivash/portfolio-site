@@ -43,9 +43,9 @@ export default function SkillsExperience() {
           {/* Experience timeline */}
           <AnimatedSection delay={0.2}>
             <div>
-              <div className="space-y-12">
+              <ol className="space-y-12">
                 {experience.map((job, index) => (
-                  <div
+                  <li
                     key={`${job.company}-${job.role}`}
                     className="relative border-l-2 border-deep-blue/20 pl-8"
                   >
@@ -65,9 +65,9 @@ export default function SkillsExperience() {
                       {job.description}
                     </p>
                     {index < experience.length - 1 && <div className="mt-12" />}
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ol>
             </div>
           </AnimatedSection>
         </div>

@@ -34,8 +34,13 @@ export default function About() {
 
               {/* Pull quote */}
               <blockquote className="border-l-2 border-deep-blue pl-6 font-serif text-xl italic text-charcoal">
-                &ldquo;I believe great interfaces are invisible — they empower
-                users without getting in their way.&rdquo;
+                <p>
+                  &ldquo;I believe great interfaces are invisible — they empower
+                  users without getting in their way.&rdquo;
+                </p>
+                <footer className="mt-2 font-sans text-sm not-italic text-charcoal/50">
+                  — Javier Rivas
+                </footer>
               </blockquote>
 
               <p>

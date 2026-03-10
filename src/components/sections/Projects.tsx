@@ -181,6 +181,7 @@ export default function Projects() {
                   onClick={() => toggleProject(project.id)}
                   className="flex w-full items-start justify-between gap-4 p-6 text-left lg:p-8"
                   aria-expanded={expandedId === project.id}
+                  aria-label={`${expandedId === project.id ? "Collapse" : "Expand"} ${project.title} case study`}
                 >
                   <div className="flex-1">
                     <h3 className="font-serif text-2xl font-semibold text-charcoal">

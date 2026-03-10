@@ -140,24 +140,18 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      {!prefersReducedMotion && (
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <p className="text-xs uppercase tracking-[0.15em] text-sage">
-            Scroll
-          </p>
-        </motion.div>
-      )}
-      {prefersReducedMotion && (
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <p className="text-xs uppercase tracking-[0.15em] text-sage">
-            Scroll
-          </p>
-        </div>
-      )}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        animate={prefersReducedMotion ? {} : { y: [0, 8, 0] }}
+        transition={
+          prefersReducedMotion
+            ? { duration: 0 }
+            : { duration: 2, repeat: Infinity, ease: "easeInOut" }
+        }
+        aria-hidden="true"
+      >
+        <p className="text-xs uppercase tracking-[0.15em] text-sage">Scroll</p>
+      </motion.div>
     </section>
   );
 }

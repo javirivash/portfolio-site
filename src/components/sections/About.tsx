@@ -1,3 +1,4 @@
+import Image from "next/image";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 
 export default function About() {
@@ -79,11 +80,15 @@ export default function About() {
           {/* Photo column */}
           <AnimatedSection delay={0.2}>
             <div className="relative">
-              {/* TODO: Replace with actual portrait photo */}
-              <div className="aspect-[4/5] w-full rounded-sm bg-warm-gray">
-                <div className="flex h-full items-center justify-center text-sm text-sage">
-                  Portrait photo
-                </div>
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm">
+                <Image
+                  src="/portrait.jpg"
+                  alt="Javier Rivas — Frontend Engineer"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
               </div>
               {/* Decorative offset border */}
               <div className="absolute -bottom-3 -right-3 -z-10 h-full w-full rounded-sm border-2 border-sage/30" />

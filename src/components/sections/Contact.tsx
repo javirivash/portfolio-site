@@ -12,19 +12,27 @@ export default function Contact() {
             I&apos;m open to new opportunities and collaborations. Let&apos;s
             connect.
           </p>
+          <p className="mt-4 text-xs font-medium uppercase tracking-[0.2em] text-sage">
+            Available for remote roles · Based in Mexico
+          </p>
         </AnimatedSection>
 
         <AnimatedSection delay={0.1}>
-          <div className="mt-10">
-            {/* TODO: Replace with actual Calendly link */}
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
-              href="https://calendly.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:javirivas14@gmail.com"
               className="inline-flex items-center gap-2 rounded-full bg-deep-blue px-8 py-3.5 text-sm font-medium text-cream transition-colors hover:bg-deep-blue/90"
             >
-              Book a Call
+              Email Me
               <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a
+              href="https://linkedin.com/in/javirivash"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-charcoal/20 px-8 py-3.5 text-sm font-medium text-charcoal transition-colors hover:border-deep-blue hover:text-deep-blue"
+            >
+              LinkedIn
             </a>
           </div>
 

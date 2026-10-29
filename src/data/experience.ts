@@ -7,6 +7,13 @@ export interface Experience {
 
 export const experience: Experience[] = [
   {
+    company: "Organic Nails",
+    role: "Freelance Full-Stack Engineer",
+    period: "2026 – Present",
+    description:
+      "Sole developer of a live course-booking and studio-management platform (Next.js, Supabase, Stripe). Built booking and payments, an admin panel and automated email and WhatsApp reminders.",
+  },
+  {
     company: "DataRobot",
     role: "Frontend Engineer II",
     period: "2024 – 2025",

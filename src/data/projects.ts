@@ -1,6 +1,7 @@
 export interface Project {
   id: string;
   title: string;
+  period?: string;
   description: string;
   tags: string[];
   context: string;
@@ -13,8 +14,36 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "organic-nails",
+    title: "Organic Nails",
+    period: "Apr 2026 – Present",
+    description:
+      "Course booking, payments and studio management platform for a nail-training business in Mexico. Designed, built and run solo.",
+    tags: ["Next.js", "Supabase", "Stripe", "Full-Stack"],
+    context:
+      "Organic Nails is a nail-products distributor and training studio in Tepic, Mexico, selling multi-week course packages taught to groups. The studio ran on spreadsheets and WhatsApp threads. I've worked with the client since April 2026 and started development in June 2026 as the sole developer.",
+    approach:
+      "Online booking and Stripe Checkout (deposits, full and idempotent balance payments) with seat holds and transactional writes on payment confirmation. A full admin panel for catalog, group and session scheduling with capacity limits, in-person sales, roll call, kit hand-off and a signed per-student MXN ledger. Email (Resend) and WhatsApp (Twilio) reminders from scheduled jobs. Core business rules live in Postgres as transactional PL/pgSQL with Row-Level Security across 29 versioned migrations; money is stored as integer centavos and packages are frozen entitlements.",
+    outcome:
+      "Live in production with 89 accounts, 81 packages sold and 406 course bookings. 353 merged PRs, about 1,090 automated tests (704 unit, 387 database integration), CI and a production smoke suite on every PR, and a nightly schema-drift check. Infrastructure under MXN $1,000/month.",
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "PostgreSQL",
+      "Stripe",
+      "Vitest",
+      "GitHub Actions",
+      "Vercel",
+    ],
+    liveUrl: "https://organicnailstepic.com",
+  },
+  {
     id: "datarobot-platform",
     title: "DataRobot AI Platform",
+    period: "2021 – 2025",
     description:
       "Production-scale frontend features for an enterprise AI/ML platform.",
     tags: ["React", "TypeScript", "Cypress", "Design Systems"],
@@ -29,6 +58,7 @@ export const projects: Project[] = [
   {
     id: "youtubit",
     title: "YouTubit",
+    period: "2021",
     description:
       "Full-featured video app built with the YouTube API during a React bootcamp at Wizeline.",
     tags: ["React", "Firebase", "Styled Components"],

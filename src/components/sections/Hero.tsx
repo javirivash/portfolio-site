@@ -73,7 +73,7 @@ export default function Hero() {
           }
         >
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-sage">
-            Frontend Engineer &amp; UI Craftsman
+            Frontend &amp; Full-Stack Engineer
           </p>
           <h1 className="font-serif text-5xl font-bold leading-tight tracking-tight text-charcoal md:text-6xl lg:text-7xl">
             Javier
@@ -83,6 +83,13 @@ export default function Hero() {
           <p className="mt-6 max-w-md text-lg leading-relaxed text-charcoal/70">
             Building scalable, accessible interfaces with React and TypeScript.
             Proven ability leading feature projects from planning to release.
+          </p>
+          <p className="mt-6 inline-flex items-center gap-2 text-sm text-charcoal/70">
+            <span
+              className="h-2 w-2 rounded-full bg-sage"
+              aria-hidden="true"
+            />
+            Open to remote roles · Based in Mexico
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a

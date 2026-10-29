@@ -17,11 +17,13 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.javirivash.dev"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Javier Rivas — Frontend Engineer",
+  title: "Javier Rivas — Frontend & Full-Stack Engineer",
   description:
-    "Frontend Engineer with 4+ years of experience building scalable, accessible user interfaces using React, TypeScript, and modern tooling.",
+    "Frontend & Full-Stack Engineer with 4+ years of experience building scalable, accessible user interfaces with React, TypeScript and Next.js. Remote from Mexico.",
   keywords: [
     "Frontend Engineer",
+    "Full-Stack Engineer",
+    "Next.js",
     "React Developer",
     "TypeScript",
     "UI Engineer",
@@ -31,9 +33,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Javier Rivas" }],
   creator: "Javier Rivas",
   openGraph: {
-    title: "Javier Rivas — Frontend Engineer",
+    title: "Javier Rivas — Frontend & Full-Stack Engineer",
     description:
-      "Frontend Engineer with 4+ years of experience building scalable, accessible user interfaces.",
+      "Frontend & Full-Stack Engineer with 4+ years of experience building scalable, accessible user interfaces. Remote from Mexico.",
     url: siteUrl,
     siteName: "Javier Rivas",
     locale: "en_US",
@@ -44,7 +46,7 @@ export const metadata: Metadata = {
     //     url: "/og-image.png",
     //     width: 1200,
     //     height: 630,
-    //     alt: "Javier Rivas — Frontend Engineer",
+    //     alt: "Javier Rivas — Frontend & Full-Stack Engineer",
     //   },
     // ],
   },

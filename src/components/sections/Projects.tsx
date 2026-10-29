@@ -187,6 +187,11 @@ export default function Projects() {
                     <h3 className="font-serif text-2xl font-semibold text-charcoal">
                       {project.title}
                     </h3>
+                    {project.period && (
+                      <p className="mt-1 font-mono text-xs text-sage">
+                        {project.period}
+                      </p>
+                    )}
                     <p className="mt-2 text-sm text-charcoal/60">
                       {project.description}
                     </p>

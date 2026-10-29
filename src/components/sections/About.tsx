@@ -32,6 +32,12 @@ export default function About() {
                 thrive in fast-paced environments where quality and
                 collaboration go hand in hand.
               </p>
+              <p>
+                Today I design, build and run a full-stack booking and
+                payments platform for Organic Nails, a training studio in
+                Mexico, as its sole developer, using Next.js, Supabase and
+                Stripe. I work remotely from Mexico.
+              </p>
 
               {/* Pull quote */}
               <blockquote className="border-l-2 border-deep-blue pl-6 font-serif text-xl italic text-charcoal">
@@ -83,7 +89,7 @@ export default function About() {
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm">
                 <Image
                   src="/portrait.jpg"
-                  alt="Javier Rivas — Frontend Engineer"
+                  alt="Portrait of Javier Rivas, Frontend & Full-Stack Engineer"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"

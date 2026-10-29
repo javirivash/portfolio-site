@@ -12,7 +12,7 @@ export default function Resume() {
             </h2>
             <a
               href="/resume.pdf"
-              download="Javier Rivas - Frontend Engineer.pdf"
+              download="Javier Rivas - Frontend & Full-Stack Engineer.pdf"
               className="inline-flex items-center gap-2 rounded-full bg-deep-blue px-6 py-3 text-sm font-medium text-cream transition-colors hover:bg-deep-blue/90"
             >
               <svg

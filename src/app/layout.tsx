@@ -13,7 +13,7 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.javirivash.dev";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://javirivash.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
